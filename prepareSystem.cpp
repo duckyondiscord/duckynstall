@@ -79,22 +79,5 @@ int main()
     std::cin >> canConnect;
     if (canConnect == 'y' || canConnect == 'Y')
     {
-    prepareChRoot();
-    char reboot;
-        std::cout << "Do you wish to reboot the system? This is necessary for the system to recognize the new partition table. [Y/n]";
-        std::cin >> reboot;
-        if(reboot == 'Y' || reboot == 'y')
-        {
-            system("reboot");
-        }
-        if(reboot == 'N' || reboot == 'n')
-        {
-            return 0;
-        }
-    }
-    else
-    {
-        std::cout << "\nConnect to the internet and run the script again.\n";
-        return 0;
-    }
+    prepareChRoot(); 
 }
