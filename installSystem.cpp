@@ -47,9 +47,6 @@ void installSystem()
     system("genfstab -U /mnt >> /mnt/etc/fstab");
     cout << "\nChanging root into the arch environment, you need to run the next part of installSystem in the chroot environment";
     system("arch-chroot /mnt");
-
-    
-    
 }
 
 int main()
