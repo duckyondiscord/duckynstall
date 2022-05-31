@@ -74,6 +74,11 @@ void prepareChRoot()
 
 int main()
 {
+    char canConnect;
+    std::cout << "You need to follow the Arch wiki's guide on setting it up if you have WiFi, can you connect to the network as of now?(try pinging some site in another tty) [Y/n]";
+    std::cin >> canConnect;
+    if (canConnect == 'y' || canConnect == 'Y')
+    {
     prepareChRoot();
     char reboot;
         std::cout << "Do you wish to reboot the system? This is necessary for the system to recognize the new partition table. [Y/n]";
@@ -86,4 +91,10 @@ int main()
         {
             return 0;
         }
+    }
+    else
+    {
+        std::cout << "\nConnect to the internet and run the script again.\n";
+        return 0;
+    }
 }
