@@ -43,9 +43,10 @@ void installSystem()
         system(command.c_str());
     }
 
-    system("pacstrap /mnt base linux linux-firmware sudo nano");
+    system("pacstrap /mnt base linux linux-firmware sudo nano archlinux-keyring wget --noconfirm");
     system("genfstab -U /mnt >> /mnt/etc/fstab");
-    
+    cout << "\nChanging root into the arch environment, you need to run the next part of installSystem in the chroot environment";
+    system("arch-chroot /mnt");
 
     
     
