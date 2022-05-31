@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string>
 
-int isSubstring(std::string s1, std::string s2)
+int isSubstring(std::string s1, std::string s2) // Function I copy-pasted to find if a string is a substring of another, later used in checking of the storage device is NVMe or eMMC
 {
     int M = s1.length();
     int N = s2.length();
@@ -27,12 +27,12 @@ int isSubstring(std::string s1, std::string s2)
 
 void installSystem()
 {
-    using namespace std;
+    using namespace std; // Bad practice, but I was lazy to type std:: in front of stuff
     string diskPath;
-    string command;
+    string command; // Command string that I reused throughout my code since it didn't need to store persistent information
     cout << "Enter the disk you used previously(raw disk name, no partition numbers):";
     cin >> diskPath;
-    if(isSubstring("nvme", diskPath) != -1 || isSubstring("mmcblk", diskPath) != -1)
+    if(isSubstring("nvme", diskPath) != -1 || isSubstring("mmcblk", diskPath) != -1) // Check if the storage device is NVMe or eMMC, this is where the isSubstring function comes in
     {
         command = "mount " + diskPath + "p3";
         system(command.c_str());
