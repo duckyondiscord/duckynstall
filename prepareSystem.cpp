@@ -80,4 +80,5 @@ int main()
     if (canConnect == 'y' || canConnect == 'Y')
     {
     prepareChRoot(); 
+    }
 }
