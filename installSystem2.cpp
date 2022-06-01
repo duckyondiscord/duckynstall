@@ -23,8 +23,7 @@ void installSystem2()
     system("pacman -Sy --noconfirm"); // Update repos in case of an out-of-date ISO
 
     cout << "\nInstalling system...";
-    system("pacman -S --noconfirm mesa xorg xorg-server xorg-apps xorg-drivers xorg-xkill xorg-xinit plasma-desktop alsa-plugins alsa-utils ark mpv cronie discover dolphin dosfstools ntfs-3g fuse2 fuse3 gcc gparted grub gwenview kate kcodecs kcoreaddons kdeplasma-addons kitty firefox neofetch pacman-contrib p7zip patch sddm sddm-kcm spectacle wine winetricks xdg-desktop-portal-kde xdg-user-dirs zip zsh pipewire pipewire-pulse pipewire-alsa networkmanager && systemctl enable sddm NetworkManager"); // Install the system
-    system("pacman -S intel-ucode amd-ucode"); // Install microcode(installs both Intel and AMD since I couldn't be bothered to check the CPU type)
+    system("pacman -S --noconfirm mesa xorg xorg-server xorg-apps xorg-drivers xorg-xkill xorg-xinit plasma-desktop alsa-plugins alsa-utils ark mpv cronie discover dolphin dosfstools ntfs-3g fuse2 fuse3 gcc gparted grub gwenview kate kcodecs kcoreaddons kdeplasma-addons kitty firefox neofetch pacman-contrib p7zip patch sddm sddm-kcm spectacle wine winetricks xdg-desktop-portal-kde xdg-user-dirs zip zsh pipewire pipewire-pulse pipewire-alsa networkmanager && systemctl enable sddm NetworkManager intel-ucode amd-ucode"); // Install the system
     string username;
     cout << "\nEnter your username:";
     cin >> username; // Couldn't reuse input for this one for later reasons
