@@ -18,12 +18,18 @@ void installSystem2()
     cout << "Select keymap(e.g us): ";
     cin >> input;
     command = "localectl --no-ask-password set-keymap " + input; // Set the keymap to the user-specified value
-    system("sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers"); // Add sudo perms for group wheel without a password
+    system("sed -i 's/^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers"); // Add sudo perms for group wheel without a password
     system("cd /etc; rm pacman.conf; wget https://duckykutya.cf/pacman.conf"); // Download and apply custom pacman.conf file so I don't need to modify it with code
     system("pacman -Sy --noconfirm"); // Update repos in case of an out-of-date ISO
-
-    cout << "\nInstalling system...";
-    system("pacman -S --noconfirm mesa xorg xorg-server xorg-apps xorg-drivers xorg-xkill xorg-xinit plasma-desktop alsa-plugins alsa-utils ark mpv cronie discover dolphin dosfstools ntfs-3g fuse2 fuse3 gcc gparted grub gwenview kate kcodecs kcoreaddons kdeplasma-addons kitty firefox neofetch pacman-contrib p7zip patch sddm sddm-kcm spectacle wine winetricks xdg-desktop-portal-kde xdg-user-dirs zip zsh pipewire pipewire-pulse pipewire-alsa networkmanager && systemctl enable sddm NetworkManager intel-ucode amd-ucode"); // Install the system
+    system("pacman -S --noconfirm mesa xorg xorg-server xorg-apps xorg-drivers xorg-xkill xorg-xinit plasma-desktop alsa-plugins alsa-utils ark mpv cronie discover dolphin dosfstools ntfs-3g fuse2 fuse3 gcc gparted grub gwenview kate kcodecs kcoreaddons kdeplasma-addons kitty firefox neofetch pacman-contrib p7zip patch sddm sddm-kcm spectacle wine winetricks xdg-desktop-portal-kde xdg-user-dirs zip zsh pipewire pipewire-pulse pipewire-alsa networkmanager intel-ucode amd-ucode && systemctl enable sddm NetworkManager"); // Install the system
+    cout << "\nWould you like to have a root user? [y/n]";
+    cin >> input;
+    if(input == "y" || input == "Y")
+    {
+        cout << "Enter the password for root below\n";
+        system("passwd root");
+    }
+    
     string username;
     cout << "\nEnter your username:";
     cin >> username; // Couldn't reuse input for this one for later reasons

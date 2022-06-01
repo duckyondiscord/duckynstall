@@ -67,18 +67,7 @@ void prepareChRoot()
         system(command.c_str());
         cout << "System is ready for installation!\n";
     }
-    
 
-}
- 
-
-void installSystem()
-{
-    using namespace std; // Bad practice, but I was lazy to type std:: in front of stuff
-    string diskPath;
-    string command; // Command string that I reused throughout my code since it didn't need to store persistent information
-    cout << "Enter the disk you used previously(raw disk name, no partition numbers):";
-    cin >> diskPath;
     if(isSubstring("nvme", diskPath) != -1 || isSubstring("mmcblk", diskPath) != -1) // Check if the storage device is NVMe or eMMC, this is where the isSubstring function comes in
     {
         command = "mount " + diskPath + "p3";
@@ -93,11 +82,14 @@ void installSystem()
     system("pacstrap /mnt base linux linux-firmware sudo nano archlinux-keyring wget openssh --noconfirm"); // OpenSSH is installed to allow the user to scp the next executable over from another system if needed
     system("genfstab -U /mnt >> /mnt/etc/fstab");
     cout << "\nChanging root into the arch environment, you need to run the next part of installSystem in the chroot environment";
+    system("cp /bin/duckynstall2 /mnt/bin/duckynstall2");
     system("arch-chroot /mnt");
+    
+
 }
+ 
 
 int main()
 {
     prepareChRoot();
-    installSystem();
 }
