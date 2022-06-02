@@ -7,7 +7,7 @@ void installSystem2()
     using namespace std;
     string input; // String I use throughout my code for inputs since they're not persistent information
     string command;
-    cout << "Which locale are you in? (e.g America/New_York): ";
+    cout << "Which timezone are you in? (e.g America/New_York): ";
     cin >> input;
     system("sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen"); // Set locale
     system("locale-gen"); // Generate locale
