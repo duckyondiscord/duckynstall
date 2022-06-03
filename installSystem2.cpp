@@ -53,7 +53,6 @@ void installSystem2()
     command = "grub-install " + diskPath;                               //  Install for both BIOS and UEFI boot since I couldn't be bothered to detect which one the system was booted with
     system(command.c_str());                                            //  and there isn't much overhead to doing this
     system("grub-mkconfig -o /boot/grub/grub.cfg");
-    system("notify-send -a \"duckynstall\" \"Installation Finished!\""); // If the user is using a DE in the live environment, notify them that the installation is done!
 }                                                             
 
 int main()
