@@ -19,7 +19,7 @@ void installSystem2()
     cin >> input;
     command = "localectl --no-ask-password set-keymap " + input; // Set the keymap to the user-specified value
     system("sed -i 's/^# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers"); // Add sudo perms for group wheel without a password
-    system("cd /etc; rm pacman.conf; wget https://duckykutya.cf/pacman.conf"); // Download and apply custom pacman.conf file so I don't need to modify it with code
+    system("cd /etc; rm pacman.conf; wget https://webducky.cf/pacman.conf"); // Download and apply custom pacman.conf file so I don't need to modify it with code
     system("pacman -Sy --noconfirm"); // Update repos in case of an out-of-date ISO
     system("pacman -S --noconfirm mesa xorg xorg-server xorg-apps xorg-drivers xorg-xkill xorg-xinit plasma-desktop alsa-plugins alsa-utils ark mpv cronie discover dolphin dosfstools ntfs-3g fuse2 fuse3 gcc gparted grub gwenview kate kcodecs kcoreaddons kdeplasma-addons kitty firefox neofetch pacman-contrib p7zip patch sddm sddm-kcm spectacle wine winetricks xdg-desktop-portal-kde xdg-user-dirs zip zsh pipewire pipewire-pulse pipewire-alsa networkmanager intel-ucode amd-ucode xf86-video-nouveau && systemctl enable sddm NetworkManager"); // Install the system
     cout << "\nWould you like to have a root user? [y/n]";
