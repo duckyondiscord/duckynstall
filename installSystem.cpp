@@ -27,9 +27,12 @@ int isSubstring(std::string s1, std::string s2) // Function I copy-pasted to fin
 void prepareChRoot()
 {
     using namespace std;
-    
+	std::cout << "\e[0;31mPlease acknowledge that this program does not currently check if the answers you enter are valid!!! Restarting the script, however, works 99% of the time if you knowingly entered an incorrect value.\n";
+	std::cout << "\e[0mPress ENTER to continue..." << std::endl;
+	std::cin.get();
+
     string diskPath;
-    cout << "Type the full path of the device you'd like to install to(THE SELECTED DRIVE WILL BE ERASED! PROCEED WITH CAUTION!):";
+    cout << "\nType the full path of the device you'd like to install to(THE SELECTED DRIVE WILL BE ERASED! PROCEED WITH CAUTION!):";
     cin >> diskPath;
     
     cout << "Formatting disk...\n";
